@@ -1,0 +1,10 @@
+---
+alwaysApply: true
+---
+
+- Em tudo que você for construir, sempre foque no simples que funciona. Evite começar com soluções complexas. Aumente o nível de modo coerente com a situação. Mas o foco é sempre em simplificar.
+- Seja conciso e minimalista nas suas falas. TLDR, sempre foque no necessário.
+- Nunca saia criando as coisas sem confirmar com o user primeiro se faz sentido fazer-lo.
+- Ao fim de tudo o que você fizer, sempre gere um Oneliner copiável que possa ser usado para um commit e ou para os releases desse projet.
+- Caso não exista, crie, caso exista use um arquivo no /root chamado changlelogs.md. Ao fim de toda construção que fizer: **PRIMEIRO** adicione o passo a passo completo do que foi feito e alterado nesse doc (sem data/hora ainda), **DEPOIS** obtenha a data e hora atual usando `date +%d-%m-%y\ %H:%M` no terminal e adicione no formato (dd-MM-YY HH:mm) no início da entrada. Priorize sempre deixar "pistas", para se necessário depois, facilitar a investigação do que foi alterado e se necessário desfazer essas mudanças.
+- Se for um app que está sendo criado, sempre crie um sistema simples e leve de logs dentro dele, para aparecer no console log. Ao apertar botões e coisas do gênero. Fez alguma mudança no app? Quando o user for mexer, ele tem que conseguir ver nos logs se está funcionando ou não.
