@@ -1,0 +1,6 @@
+#!/bin/bash
+# Video Downloader — executar a partir da raiz do projeto (cli-video-downloader)
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$DIR/video-downloader" || exit 1
+source .venv/bin/activate
+exec python -m video_downloader "$@"

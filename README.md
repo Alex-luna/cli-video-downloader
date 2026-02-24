@@ -24,20 +24,18 @@ Uma aplicação CLI elegante e simples para baixar vídeos do YouTube, Vimeo e L
 
 ### Setup
 
-1. **Clone ou baixe o projeto:**
+1. **Entre no projeto:**
 ```bash
-cd ~/Projects/video-downloader
+cd cli-video-downloader
 ```
 
-2. **Crie um ambiente virtual:**
+2. **Crie o venv e instale dependências:**
 ```bash
+cd video-downloader
 python3 -m venv .venv
 source .venv/bin/activate
-```
-
-3. **Instale as dependências:**
-```bash
 pip install -r requirements.txt
+cd ..
 ```
 
 4. **Instale o yt-dlp via Homebrew (recomendado):**
@@ -47,29 +45,32 @@ brew install yt-dlp
 
 ## Uso
 
-### Modo rápido (baixa e sai)
-```bash
-python -m video_downloader https://youtu.be/ABC123
-```
-URLs simples (ex: youtu.be/xxx) não precisam de aspas. URLs com `&` ou `?` exigem aspas: `vd "https://youtube.com/watch?v=xxx&list=yyy"`
+Na raiz do projeto (`cli-video-downloader`):
 
 ### Modo TUI (fica aberto)
 ```bash
-python -m video_downloader
+./vd
 ```
-Abre a interface Textual: cole a URL, escolha qualidade (↑↓ Enter) e baixe. Após cada download, pode baixar outro sem fechar.
+
+### Modo rápido (baixa e sai)
+```bash
+./vd https://youtu.be/ABC123
+```
+URLs simples não precisam de aspas. URLs com `&` ou `?` exigem aspas: `./vd "https://youtube.com/watch?v=xxx&list=yyy"`
 
 ### Com título customizado
 ```bash
-python -m video_downloader https://youtu.be/xxx --title "Meu Vídeo"
+./vd https://youtu.be/xxx --title "Meu Vídeo"
 ```
 
-### Criar um alias (opcional)
-Adicione ao `~/.zshrc` ou `~/.bash_profile`:
+### Criar um alias `vd` global
+Adicione ao `~/.zshrc` (ajuste o caminho do projeto):
 ```bash
-alias vd='cd ~/path/to/video-downloader && source .venv/bin/activate && python -m video_downloader'
+alias vd='~/Documents/Luna-Labs-Cursor/cli-video-downloader/vd'
 ```
-Uso: `vd` (TUI) ou `vd https://url` (modo rápido).
+Depois: `vd` (TUI) ou `vd https://url` (modo rápido).
+
+**Importante:** O alias deve apontar para o script `vd` que **executa** o app, não apenas ativar o venv.
 
 ## Estrutura de Pastas
 

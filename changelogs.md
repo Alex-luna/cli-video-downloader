@@ -38,3 +38,31 @@
 - `video-downloader/video_downloader/tui.py`: novo
 - `video-downloader/requirements.txt`: questionary, textual
 - `video-downloader/README.md`, `video-downloader/USAGE.md`
+
+---
+
+## 23-02-26 12:10 — Fix: vd só ativava venv, não rodava o app
+
+- **vd** (novo): script na raiz que executa o app (cd video-downloader, source .venv, python -m video_downloader)
+- **README.md**: instruções com ./vd e alias correto (apontar para o script, não só venv)
+
+---
+
+## 23-02-26 19:06 — Fix: thumbnails YouTube + feedback claro na CLI
+
+- **download_thumbnail**: fallback maxresdefault → hqdefault (maxresdefault retorna 404 em vídeos antigos)
+- Headers User-Agent para evitar bloqueio
+- Retorno estruturado: ("ok"|"fallback"|"error"|"not_found", path|msg)
+- **CLI**: mensagens explícitas — ✓ Thumbnail baixada (HD/padrão), ✗ Erro, ⚠ Não encontrada
+- **TUI ResultScreen**: exibe status da thumbnail
+- **do_download**: passa a retornar (output_path, folder, thumbnail_result)
+
+---
+
+## 23-02-26 19:15 — Thumbnails: 10 camadas de fallback + qual foi usada
+
+- **THUMBNAIL_SOURCES**: 10 fontes em ordem (maxresdefault → 0 → sddefault → hqdefault → mqdefault → 1/2/3 → default)
+- **download_thumbnail**: tenta todas; retorna (quality_key, path) com qual funcionou
+- **CLI/TUI**: exibe qual qualidade foi baixada (ex: "máxima resolução (1280px)", "HQ (480px)")
+- Se nenhuma funcionar: "nenhuma das 10 fontes disponíveis funcionou"
+- **youtube-thumbnail-url.md**: documentada ordem de fallback
