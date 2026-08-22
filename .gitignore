@@ -1,0 +1,13 @@
+
+# disk-cleanup snapshot
+node_modules/
+.next/
+.venv/
+venv/
+.venv-bpm/
+.DS_Store
+.env
+.env.local
+.env.*.local
+*.sqlite
+.solo-pglite/
